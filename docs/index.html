@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina-hc</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+        nav {
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .logo { font-size: 1.25rem; font-weight: 700; color: #111; text-decoration: none; }
+        nav .logo span { color: #0066cc; }
+        nav .right { display: flex; align-items: center; }
+        nav a { color: #555; text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; }
+        nav a:hover { color: #0066cc; }
+        .lang-btn {
+            background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px;
+            padding: 0.3rem 0.75rem; font-size: 0.85rem; cursor: pointer;
+            color: #555; margin-left: 1.5rem; transition: all 0.2s;
+        }
+        .lang-btn:hover { border-color: #0066cc; color: #0066cc; }
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, #fff 0%, #f5f7fa 100%);
+        }
+        .hero h1 { font-size: 3rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+        .hero h1 span { color: #0066cc; }
+        .hero .subtitle { font-size: 1.15rem; color: #666; margin-bottom: 1.5rem; }
+        .hero .bio {
+            font-size: 0.95rem; color: #888; max-width: 500px; margin: 0 auto 1.5rem;
+        }
+        .hero .bio a { color: #0066cc; text-decoration: none; }
+        .hero .bio a:hover { text-decoration: underline; }
+        .btn {
+            display: inline-block; padding: 0.75rem 2rem; border-radius: 6px;
+            text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.2s;
+        }
+        .btn-primary { background: #0066cc; color: #fff; }
+        .btn-primary:hover { background: #0052a3; }
+        .btn-outline { border: 1px solid #ddd; color: #555; margin-left: 0.75rem; }
+        .btn-outline:hover { border-color: #0066cc; color: #0066cc; }
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+        .section h2 { font-size: 1.75rem; font-weight: 700; color: #111; margin-bottom: 1.5rem; }
+        .project-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+        .project-card:hover { border-color: #0066cc; }
+        .project-card h3 { font-size: 1.1rem; font-weight: 600; color: #111; margin-bottom: 0.5rem; }
+        .project-card p { font-size: 0.9rem; color: #666; margin-bottom: 0.75rem; }
+        .project-card .links { display: flex; gap: 1rem; }
+        .project-card .links a {
+            font-size: 0.85rem; color: #0066cc; text-decoration: none;
+        }
+        .project-card .links a:hover { text-decoration: underline; }
+        .project-card .tag {
+            display: inline-block;
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 0.15rem 0.5rem;
+            font-size: 0.75rem;
+            color: #666;
+            margin-right: 0.4rem;
+        }
+        footer {
+            text-align: center; padding: 2rem; border-top: 1px solid #e5e5e5; color: #999; font-size: 0.85rem;
+        }
+        footer a { color: #0066cc; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="logo" href="#">Lumina<span>hc</span></a>
+        <div class="right">
+            <a href="#projects" data-en="Projects" data-zh="项目">Projects</a>
+            <a href="https://github.com/Lumina-hc">GitHub</a>
+            <a href="https://space.bilibili.com/" data-en="Bilibili" data-zh="Bilibili">Bilibili</a>
+            <button class="lang-btn" onclick="toggleLang()">EN / 中文</button>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Lumina<span>hc</span></h1>
+        <p class="subtitle" data-en="Hobby programmer building operating systems and compilers." data-zh="兴趣程序员，造操作系统和编译器。">Hobby programmer building operating systems and compilers.</p>
+        <p class="bio" data-en="I'm a primary school student who loves programming. Follow me on Bilibili: <a href='https://space.bilibili.com/'>长庚hc</a>" data-zh="我是一名热爱编程的小学生。关注我的 Bilibili：<a href='https://space.bilibili.com/'>长庚hc</a>">I'm a primary school student who loves programming. Follow me on Bilibili: <a href='https://space.bilibili.com/'>长庚hc</a></p>
+        <a href="https://github.com/Lumina-hc" class="btn btn-primary" data-en="GitHub" data-zh="GitHub">GitHub</a>
+        <a href="https://space.bilibili.com/" class="btn btn-outline" data-en="Bilibili" data-zh="Bilibili">Bilibili</a>
+    </div>
+
+    <div class="section" id="projects">
+        <h2 data-en="Projects" data-zh="项目">Projects</h2>
+
+        <div class="project-card">
+            <h3>LuminaOS</h3>
+            <p data-en="A hobby operating system for i386 built from scratch — custom bootloader, kernel, FAT16 filesystem, VGA desktop, and LSP applications." data-zh="从零构建的 i386 兴趣操作系统 —— 自定义引导程序、内核、FAT16 文件系统、VGA 桌面和 LSP 应用。">A hobby operating system for i386 built from scratch — custom bootloader, kernel, FAT16 filesystem, VGA desktop, and LSP applications.</p>
+            <div style="margin-bottom:0.5rem">
+                <span class="tag">C</span>
+                <span class="tag">Assembly</span>
+                <span class="tag">OS</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/Lumina-hc/LuminaOS">GitHub</a>
+                <a href="https://lumina-hc.github.io/LuminaOS/">Pages</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>LuminaOS SDK</h3>
+            <p data-en="Software development kit for building LuminaOS applications. Graphics, input, file system, and window APIs in C." data-zh="构建 LuminaOS 应用的软件开发工具包。C 语言图形、输入、文件系统和窗口 API。">Software development kit for building LuminaOS applications. Graphics, input, file system, and window APIs in C.</p>
+            <div style="margin-bottom:0.5rem">
+                <span class="tag">C</span>
+                <span class="tag">SDK</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/Lumina-hc/LuminaOS-SDK">GitHub</a>
+                <a href="https://lumina-hc.github.io/LuminaOS-SDK/">Pages</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>LuminaLang</h3>
+            <p data-en="A strongly-typed compiled language. Write .lum source, transpile to Go, build to a native executable." data-zh="强类型编译语言。编写 .lum 源码，转译为 Go，构建为原生可执行文件。">A strongly-typed compiled language. Write .lum source, transpile to Go, build to a native executable.</p>
+            <div style="margin-bottom:0.5rem">
+                <span class="tag">Go</span>
+                <span class="tag">Language</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/Lumina-hc/LuminaLang">GitHub</a>
+                <a href="https://lumina-hc.github.io/LuminaLang/">Pages</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>StdOS</h3>
+            <p data-en="A lightweight 32-bit protected mode OS with FAT16 filesystem, IDE PIO disk I/O, and shell." data-zh="轻量级 32 位保护模式操作系统，支持 FAT16 文件系统、IDE PIO 磁盘读写和 Shell。">A lightweight 32-bit protected mode OS with FAT16 filesystem, IDE PIO disk I/O, and shell.</p>
+            <div style="margin-bottom:0.5rem">
+                <span class="tag">Assembly</span>
+                <span class="tag">C</span>
+                <span class="tag">OS</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/Lumina-hc/stdOS">GitHub</a>
+                <a href="https://lumina-hc.github.io/stdOS/">Pages</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>SPS Compiler</h3>
+            <p data-en="A cross-platform low-level compiler for StdOS. Custom .sps language with registers, loops, and x86-64 codegen." data-zh="StdOS 的跨平台底层编译器。自定义 .sps 语言，支持寄存器、循环和 x86-64 代码生成。">A cross-platform low-level compiler for StdOS. Custom .sps language with registers, loops, and x86-64 codegen.</p>
+            <div style="margin-bottom:0.5rem">
+                <span class="tag">C</span>
+                <span class="tag">Compiler</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/Lumina-hc/stdOS-Language-Compiler">GitHub</a>
+                <a href="https://lumina-hc.github.io/stdOS-Language-Compiler/">Pages</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Lumina-hc &copy; 2026 | <a href="https://github.com/Lumina-hc">GitHub</a> | <a href="https://space.bilibili.com/">Bilibili</a></p>
+    </footer>
+
+    <script>
+        let lang = 'en';
+        function toggleLang() {
+            lang = lang === 'en' ? 'zh' : 'en';
+            document.querySelectorAll('[data-en]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+        }
+    </script>
+</body>
+</html>
