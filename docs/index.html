@@ -187,7 +187,7 @@
         function toggleLang() {
             lang = lang === 'en' ? 'zh' : 'en';
             document.querySelectorAll('[data-en]').forEach(el => {
-                el.textContent = el.getAttribute('data-' + lang);
+                el.innerHTML = el.getAttribute('data-' + lang);
             });
         }
     </script>
